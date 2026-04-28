@@ -1,5 +1,12 @@
 const projects = [
   {
+    title: 'Stori',
+    description: 'Built an AI-powered platform that helps first-generation students access real-world guidance from graduates by transcribing short audio and video stories, auto-generating titles, summaries, and tags, and surfacing personally relevant advice on internships, finances, and belonging through semantic vector search over a curated archive of lived experiences.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'ChromaDB', 'Gemini 2.5', 'SQLite'],
+    link: '#',
+    repo: '#',
+  },
+  {
     title: 'Roamer',
     description: 'Built a campus-first ride-sharing platform for student organizations that manages event-based driver pools, rider queues, and role-based access (rider/driver/admin) to streamline safe, invite-only transportation at JMU.',
     tech: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
