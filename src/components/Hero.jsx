@@ -69,7 +69,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen cursor-crosshair items-center overflow-hidden px-8"
+      className="relative flex min-h-screen items-center overflow-hidden px-8"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
@@ -91,7 +91,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y: scrollY, opacity: scrollOpacity }}
-        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 pt-24 md:grid-cols-5 md:gap-8 md:pt-0"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 pt-24 select-none md:grid-cols-5 md:gap-8 md:pt-0"
       >
         {/* Text */}
         <div className="text-center md:col-span-3 md:text-left">
@@ -139,12 +139,6 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.p
-            {...line(0.6)}
-            className="mt-8 font-mono text-xs tracking-widest text-slate-600"
-          >
-            click anywhere to interact
-          </motion.p>
         </div>
 
         {/* Profile photo with 3D tilt */}
