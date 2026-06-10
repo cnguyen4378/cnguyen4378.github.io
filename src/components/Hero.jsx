@@ -1,56 +1,84 @@
-import { useState } from 'react'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+
+const ease = [0.16, 1, 0.3, 1]
+
+const line = (delay) => ({
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease, delay },
+})
 
 export default function Hero() {
-  const [imgError, setImgError] = useState(false)
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], ['0px', '-80px'])
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-10 md:flex-row md:gap-12">
-        <div className="flex-shrink-0">
-          {imgError ? (
-            <div
-              className="flex h-48 w-48 items-center justify-center rounded-full bg-slate-800 ring-4 ring-cyan-500/30 ring-offset-4 ring-offset-slate-950 sm:h-56 sm:w-56 md:h-64 md:w-64"
-              aria-hidden
-            >
-              <span className="text-4xl font-semibold text-slate-500 sm:text-5xl md:text-6xl">CN</span>
-            </div>
-          ) : (
-            <img
-              src="/profile.jpg"
-              alt="Carter Nguyen"
-              className="h-48 w-48 rounded-full object-cover ring-4 ring-cyan-500/30 ring-offset-4 ring-offset-slate-950 sm:h-56 sm:w-56 md:h-64 md:w-64"
-              onError={() => setImgError(true)}
-            />
-          )}
-        </div>
-        <div className="max-w-3xl text-center md:text-left">
-          <p className="font-mono text-sm text-cyan-400">Hi, I'm</p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Carter Nguyen
-          </h1>
-        <p className="mt-4 text-xl text-slate-400 sm:text-2xl">
-          Computer Science · Software Engineer
-        </p>
-        <p className="mx-auto mt-6 max-w-xl text-slate-500">
-          Computer Student passionate about software engineering, testing, and problem solving.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
+    <section ref={sectionRef} className="relative flex min-h-screen items-center justify-center overflow-hidden px-8">
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
+      </div>
+
+      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-5xl text-center">
+        <motion.p
+          {...line(0)}
+          className="font-mono text-sm tracking-[0.3em] text-cyan-400 uppercase"
+        >
+          Software Engineer
+        </motion.p>
+
+        <motion.h1
+          {...line(0.15)}
+          className="mt-6 text-7xl font-bold tracking-tighter text-white sm:text-8xl md:text-9xl"
+        >
+          Carter Nguyen
+        </motion.h1>
+
+        <motion.p
+          {...line(0.3)}
+          className="mx-auto mt-8 max-w-xl text-lg text-slate-400 leading-relaxed"
+        >
+          CS student at JMU building practical, people-focused software.
+          Passionate about clean architecture and real-world impact.
+        </motion.p>
+
+        <motion.div
+          {...line(0.45)}
+          className="mt-12 flex flex-wrap justify-center gap-4"
+        >
           <a
             href="#projects"
-            className="rounded-lg bg-cyan-500/20 px-6 py-3 font-medium text-cyan-400 ring-1 ring-cyan-500/30 transition hover:bg-cyan-500/30"
+            className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="rounded-lg px-6 py-3 font-medium text-slate-400 ring-1 ring-slate-600 transition hover:bg-slate-800 hover:text-white"
+            className="rounded-full px-8 py-3 text-sm font-semibold text-slate-300 ring-1 ring-slate-700 transition hover:bg-slate-800 hover:text-white"
           >
             Get in Touch
           </a>
-        </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex h-10 w-6 items-start justify-center rounded-full ring-1 ring-slate-600 pt-2"
+        >
+          <div className="h-1.5 w-1 rounded-full bg-slate-400" />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

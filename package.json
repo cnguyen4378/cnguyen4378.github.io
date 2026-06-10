@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001769",
+    "framer-motion": "^12.40.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
