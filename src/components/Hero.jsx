@@ -1,56 +1,192 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import AsciiRipple from './AsciiRipple'
+
+const ease = [0.16, 1, 0.3, 1]
+
+const line = (delay) => ({
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease, delay },
+})
 
 export default function Hero() {
+  const sectionRef = useRef(null)
+  const asciiRef = useRef(null)
   const [imgError, setImgError] = useState(false)
 
+  // Scroll-out effect
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const scrollY = useTransform(scrollYProgress, [0, 1], ['0px', '-80px'])
+  const scrollOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+
+  // Cursor spotlight (smooth lag)
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const spotX = useSpring(mouseX, { stiffness: 60, damping: 20 })
+  const spotY = useSpring(mouseY, { stiffness: 60, damping: 20 })
+  const spotlightBg = useTransform(
+    [spotX, spotY],
+    ([x, y]) =>
+      `radial-gradient(450px circle at ${x}px ${y}px, rgba(34,211,238,0.06), transparent 70%)`
+  )
+
+  // Photo 3D tilt
+  const rotateYBase = useMotionValue(0)
+  const rotateXBase = useMotionValue(0)
+  const rotateY = useSpring(rotateYBase, { stiffness: 120, damping: 20 })
+  const rotateX = useSpring(rotateXBase, { stiffness: 120, damping: 20 })
+
+  const handleMouseMove = (e) => {
+    const rect = sectionRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    // Spotlight
+    mouseX.set(x)
+    mouseY.set(y)
+    // Photo tilt
+    const cx = rect.width / 2
+    const cy = rect.height / 2
+    rotateYBase.set(((x - cx) / cx) * 10)
+    rotateXBase.set(-((y - cy) / cy) * 10)
+    // ASCII cursor glow
+    asciiRef.current?.moveCursor(x, y)
+  }
+
+  const handleMouseLeave = () => {
+    rotateYBase.set(0)
+    rotateXBase.set(0)
+    asciiRef.current?.clearCursor()
+  }
+
+  const handleClick = (e) => {
+    const rect = sectionRef.current?.getBoundingClientRect()
+    if (!rect) return
+    asciiRef.current?.addRipple(e.clientX - rect.left, e.clientY - rect.top)
+  }
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-10 md:flex-row md:gap-12">
-        <div className="flex-shrink-0">
-          {imgError ? (
-            <div
-              className="flex h-48 w-48 items-center justify-center rounded-full bg-slate-800 ring-4 ring-cyan-500/30 ring-offset-4 ring-offset-slate-950 sm:h-56 sm:w-56 md:h-64 md:w-64"
-              aria-hidden
-            >
-              <span className="text-4xl font-semibold text-slate-500 sm:text-5xl md:text-6xl">CN</span>
-            </div>
-          ) : (
-            <img
-              src="/profile.jpg"
-              alt="Carter Nguyen"
-              className="h-48 w-48 rounded-full object-cover ring-4 ring-cyan-500/30 ring-offset-4 ring-offset-slate-950 sm:h-56 sm:w-56 md:h-64 md:w-64"
-              onError={() => setImgError(true)}
-            />
-          )}
-        </div>
-        <div className="max-w-3xl text-center md:text-left">
-          <p className="font-mono text-sm text-cyan-400">Hi, I'm</p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Carter Nguyen
-          </h1>
-        <p className="mt-4 text-xl text-slate-400 sm:text-2xl">
-          Computer Science · Software Engineer
-        </p>
-        <p className="mx-auto mt-6 max-w-xl text-slate-500">
-          Computer Student passionate about software engineering, testing, and problem solving.
-        </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
-          <a
-            href="#projects"
-            className="rounded-lg bg-cyan-500/20 px-6 py-3 font-medium text-cyan-400 ring-1 ring-cyan-500/30 transition hover:bg-cyan-500/30"
-          >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="rounded-lg px-6 py-3 font-medium text-slate-400 ring-1 ring-slate-600 transition hover:bg-slate-800 hover:text-white"
-          >
-            Get in Touch
-          </a>
-        </div>
-        </div>
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-screen items-center overflow-hidden px-8"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      {/* ASCII ripple background */}
+      <AsciiRipple ref={asciiRef} className="absolute inset-0 z-0" />
+
+      {/* Static ambient glow */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <div className="absolute left-1/2 top-[-10%] h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
       </div>
+
+      {/* Cursor spotlight */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 z-[2]"
+        style={{ background: spotlightBg }}
+      />
+
+      {/* Content */}
+      <motion.div
+        style={{ y: scrollY, opacity: scrollOpacity }}
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 pt-24 select-none md:grid-cols-5 md:gap-8 md:pt-0"
+      >
+        {/* Text */}
+        <div className="text-center md:col-span-3 md:text-left">
+          <motion.p
+            {...line(0)}
+            className="font-mono text-sm tracking-[0.3em] text-cyan-400 uppercase"
+          >
+            Software Engineer
+          </motion.p>
+
+          <motion.h1
+            {...line(0.15)}
+            className="mt-6 text-6xl font-bold tracking-tighter text-white sm:text-7xl md:text-8xl"
+          >
+            Carter
+            <br />
+            Nguyen
+          </motion.h1>
+
+          <motion.p
+            {...line(0.3)}
+            className="mx-auto mt-8 max-w-md text-lg leading-relaxed text-slate-400 md:mx-0"
+          >
+            CS student at JMU building practical, people-focused software.
+            Passionate about clean architecture and real-world impact.
+          </motion.p>
+
+          <motion.div
+            {...line(0.45)}
+            className="mt-12 flex flex-wrap justify-center gap-4 md:justify-start"
+          >
+            <a
+              href="#projects"
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-full px-8 py-3 text-sm font-semibold text-slate-300 ring-1 ring-slate-700 transition hover:bg-slate-800 hover:text-white"
+            >
+              Get in Touch
+            </a>
+          </motion.div>
+
+        </div>
+
+        {/* Profile photo with 3D tilt */}
+        <motion.div
+          {...line(0.2)}
+          className="flex justify-center md:col-span-2 md:justify-end"
+        >
+          <div style={{ perspective: '1000px' }}>
+            <motion.div
+              style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Glow ring behind photo */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-cyan-500/25 via-transparent to-transparent blur-2xl" />
+
+              {imgError ? (
+                <div className="relative flex h-64 w-64 items-center justify-center rounded-full bg-slate-800 ring-1 ring-cyan-500/20 sm:h-72 sm:w-72 md:h-80 md:w-80">
+                  <span className="text-5xl font-semibold text-slate-500">CN</span>
+                </div>
+              ) : (
+                <img
+                  src="/profile.jpg"
+                  alt="Carter Nguyen"
+                  className="relative h-64 w-64 rounded-full object-cover ring-1 ring-white/10 sm:h-72 sm:w-72 md:h-80 md:w-80"
+                  onError={() => setImgError(true)}
+                />
+              )}
+            </motion.div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex h-10 w-6 items-start justify-center rounded-full ring-1 ring-slate-600 pt-2"
+        >
+          <div className="h-1.5 w-1 rounded-full bg-slate-400" />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

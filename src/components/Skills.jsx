@@ -1,47 +1,61 @@
+import { motion } from 'framer-motion'
+
+const ease = [0.16, 1, 0.3, 1]
+const vp = { once: true, margin: '-60px' }
+
 const skillGroups = [
-  {
-    title: 'Languages',
-    items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'SQL'],
-  },
-  {
-    title: 'Frontend',
-    items: ['React', 'Tailwind CSS', 'Vite', 'Next.js'],
-  },
-  {
-    title: 'Backend & Tools',
-    items: ['Node.js', 'REST APIs', 'Git', 'Docker', 'Linux'],
-  },
-  {
-    title: 'CS Fundamentals',
-    items: ['Data Structures', 'Algorithms', 'OS', 'Databases', 'Networking'],
-  },
+  { title: 'Languages', items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'SQL'] },
+  { title: 'Frontend', items: ['React', 'Tailwind CSS', 'Vite', 'Next.js'] },
+  { title: 'Backend & Tools', items: ['Node.js', 'REST APIs', 'Git', 'Docker', 'Linux'] },
+  { title: 'CS Fundamentals', items: ['Data Structures', 'Algorithms', 'OS', 'Databases', 'Networking'] },
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-20 border-t border-slate-800/80 bg-slate-900/30 px-6 py-24">
+    <section id="skills" className="scroll-mt-20 px-8 py-40">
       <div className="mx-auto max-w-4xl">
-        <h2 className="font-mono text-sm font-medium text-cyan-400">Skills</h2>
-        <h3 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ duration: 0.8, ease }}
+          className="font-mono text-sm tracking-[0.2em] text-cyan-400 uppercase"
+        >
+          Skills
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ duration: 0.9, ease, delay: 0.1 }}
+          className="mt-6 text-4xl font-bold text-white md:text-5xl"
+        >
           What I work with
-        </h3>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
-          {skillGroups.map((group) => (
-            <div key={group.title} className="rounded-xl border border-slate-800 bg-slate-950/50 p-6">
-              <h4 className="font-mono text-sm font-medium text-amber-400/90">
+        </motion.h2>
+
+        <div className="mt-16 space-y-12">
+          {skillGroups.map((group, i) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={vp}
+              transition={{ duration: 0.8, ease, delay: i * 0.07 }}
+            >
+              <p className="font-mono text-xs tracking-widest text-slate-500 uppercase mb-4">
                 {group.title}
-              </h4>
-              <ul className="mt-4 flex flex-wrap gap-2">
+              </p>
+              <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <li
+                  <span
                     key={item}
-                    className="rounded-md bg-slate-800/80 px-3 py-1.5 text-sm text-slate-300"
+                    className="rounded-full bg-slate-800/70 px-4 py-1.5 text-sm text-slate-300 ring-1 ring-slate-700/50"
                   >
                     {item}
-                  </li>
+                  </span>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
