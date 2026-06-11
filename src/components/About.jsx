@@ -31,9 +31,9 @@ export default function About() {
 
         <div className="mt-10 space-y-5 text-slate-400 leading-relaxed">
           {[
-            "I'm a Computer Science student at James Madison University who enjoys building practical, people-focused software — most recently an AI-powered student guidance platform and a campus ride-sharing app. As a first-generation American, I'm driven by consistency, real-world impact, and growing as a full-stack developer.",
-            "Outside of code, I spend time with friends, working on personal projects, and staying active through the gym and the outdoors.",
-            "I'm always open to collaboration and new opportunities. If you have a project in mind or just want to connect, feel free to reach out.",
+            "I'm a CS student at James Madison University, currently interning at Dark Wolf Solutions as a SWE on their Data and AI team, working on problems that actually push you to think at scale.",
+            "My most recent personal project is Stori, an end-to-end AI pipeline that ingests unstructured media, generates embeddings and summaries, and makes it all searchable through semantic search. I built it for first-gen students who don't always have the right people in the room to give them real guidance.",
+            "Outside of school, I'm usually at the gym, outdoors, or with people I care about. I'm a first-generation American, and that shapes a lot of how I think about what I build. Less about impressiveness, more about impact.",
           ].map((text, i) => (
             <motion.p
               key={i}
