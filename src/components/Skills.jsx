@@ -4,9 +4,9 @@ const ease = [0.16, 1, 0.3, 1]
 const vp = { once: true, margin: '-60px' }
 
 const skillGroups = [
-  { title: 'Languages', items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'SQL'] },
-  { title: 'Frontend', items: ['React', 'Tailwind CSS', 'Vite', 'Next.js'] },
-  { title: 'Backend & Tools', items: ['Node.js', 'REST APIs', 'Git', 'Docker', 'Linux'] },
+  { title: 'Languages', items: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'SQL', 'Shell'] },
+  { title: 'Frontend', items: ['React', 'Vue', 'Tailwind CSS', 'Vite', 'Next.js'] },
+  { title: 'Backend & Tools', items: ['Node.js', 'FastAPI', 'REST APIs', 'Git', 'Docker', 'Linux'] },
   { title: 'CS Fundamentals', items: ['Data Structures', 'Algorithms', 'OS', 'Databases', 'Networking'] },
 ]
 
