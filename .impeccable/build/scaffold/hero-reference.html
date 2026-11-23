@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scaffold reference: still-scroll-comp1.webp</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu:wght@400&family=Elsie+Swash+Caps:wght@400&family=Delius+Unicase:wght@400&display=swap">
+  <link rel="stylesheet" href="layout.css">
+  <style>html,body{margin:0}body{background:#161514}.region{box-sizing:border-box}.region.text p{white-space:pre-wrap}</style>
+</head>
+<body>
+<!-- Reference only. Every region sits at its measured box inside a comp-aspect frame. Take the boxes (layout.css), keep your own semantic structure. -->
+<main class="comp-frame" style="max-width:1280px">
+  <figure class="r-bg-atmosphere region plate" data-region="bg-atmosphere"><img src="../../../assets/plates/bg-atmosphere.png" alt="" style="width:100%;height:100%;object-fit:contain;object-position:top left"></figure>
+  <div class="r-brand region text" data-region="brand"><!-- Carter Nguyen wordmark top left --><p style="font-size:var(--r-brand-font);font-family:var(--r-brand-family),sans-serif;font-weight:var(--r-brand-weight);line-height:1.05;margin:0">brand</p></div>
+  <div class="r-nav-work region control" data-region="nav-work"><!-- Work nav link: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-work); a control need not have button chrome --></div>
+  <div class="r-nav-about region control" data-region="nav-about"><!-- About nav link: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-about); a control need not have button chrome --></div>
+  <div class="r-nav-contact region control" data-region="nav-contact"><!-- Contact nav link: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-contact); a control need not have button chrome --></div>
+  <div class="r-headline region text" data-region="headline"><!-- Selected work large centered serif display --><p style="font-size:var(--r-headline-font);font-family:var(--r-headline-family),sans-serif;font-weight:var(--r-headline-weight);line-height:1.05;margin:0">headline</p></div>
+  <div class="r-copyright region text" data-region="copyright"><!-- © 2024 small footer mark --><p style="font-size:var(--r-copyright-font);font-family:var(--r-copyright-family),sans-serif;font-weight:var(--r-copyright-weight);line-height:1.05;margin:0">copyright</p></div>
+</main>
+</body>
+</html>
