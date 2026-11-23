@@ -1,0 +1,467 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-11-23T05:53:58.538Z",
+  "comp": ".impeccable/mocks/still-scroll-comp1.webp",
+  "warnings": [
+    "region bg-atmosphere: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)"
+  ],
+  "uncoveredInkCells": [],
+  "compSize": {
+    "width": 1280,
+    "height": 720
+  },
+  "aspect": 1.7778,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#161514",
+      "coverage": 0.8041
+    },
+    {
+      "hex": "#322c21",
+      "coverage": 0.1352
+    },
+    {
+      "hex": "#d6cac7",
+      "coverage": 0.0345
+    },
+    {
+      "hex": "#634d3a",
+      "coverage": 0.0226
+    },
+    {
+      "hex": "#8b6e52",
+      "coverage": 0.0037
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.4583,
+      "strength": 0.5957
+    },
+    {
+      "y": 0.5833,
+      "strength": 0.7297
+    }
+  ],
+  "regions": [
+    {
+      "id": "bg-atmosphere",
+      "kind": "plate",
+      "note": "Full-bleed dark nocturnal architecture and water photograph as the page ground",
+      "grid": "A0:J9",
+      "bleed": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 720
+      },
+      "aspect": 1.7778,
+      "palette": [
+        {
+          "hex": "#161514",
+          "coverage": 0.8041
+        },
+        {
+          "hex": "#322c21",
+          "coverage": 0.1352
+        },
+        {
+          "hex": "#d6cac7",
+          "coverage": 0.0345
+        },
+        {
+          "hex": "#634d3a",
+          "coverage": 0.0226
+        },
+        {
+          "hex": "#8b6e52",
+          "coverage": 0.0037
+        }
+      ],
+      "detail": {
+        "energy": 14.7582
+      },
+      "medium": "raster",
+      "plate": "assets/plates/bg-atmosphere.png",
+      "text": null
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "note": "Carter Nguyen wordmark top left",
+      "grid": "A0:C0",
+      "coverBox": {
+        "x": 0,
+        "y": 0,
+        "w": 0.3,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0187,
+        "y": 0.0333,
+        "w": 0.1172,
+        "h": 0.0417
+      },
+      "px": {
+        "x": 24,
+        "y": 24,
+        "w": 150,
+        "h": 30
+      },
+      "aspect": 5,
+      "palette": [
+        {
+          "hex": "#0a0a09",
+          "coverage": 0.9111
+        },
+        {
+          "hex": "#595a59",
+          "coverage": 0.0485
+        },
+        {
+          "hex": "#888888",
+          "coverage": 0.0162
+        },
+        {
+          "hex": "#3b3b35",
+          "coverage": 0.0121
+        },
+        {
+          "hex": "#e0e0e0",
+          "coverage": 0.0121
+        }
+      ],
+      "detail": {
+        "energy": 23.1566
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 12,
+          "capHeightPx": 12,
+          "inkIsDark": false,
+          "allCaps": false,
+          "advance": 0.5822,
+          "advTall": 0.8317,
+          "advX": 0.5822,
+          "gap": 0.305,
+          "xRatio": 0.6838,
+          "stemW": 0.1586,
+          "contrast": 1.2342,
+          "serif": null,
+          "densTall": 0.3358,
+          "densX": 0.5007,
+          "weight": 0.3358
+        },
+        "widthClass": "condensed",
+        "weightClass": "light",
+        "chosen": {
+          "family": "Gotu",
+          "weight": 400,
+          "fontSizePx": 17,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "0469bc7cc1e6"
+        }
+      }
+    },
+    {
+      "id": "nav-work",
+      "kind": "control",
+      "note": "Work nav link",
+      "grid": "G0:G0",
+      "box": {
+        "x": 0.6,
+        "y": 0,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "px": {
+        "x": 768,
+        "y": 0,
+        "w": 128,
+        "h": 72
+      },
+      "aspect": 1.7778,
+      "palette": [
+        {
+          "hex": "#181818",
+          "coverage": 1
+        }
+      ],
+      "detail": {
+        "energy": 0.1949
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-about",
+      "kind": "control",
+      "note": "About nav link",
+      "grid": "H0:H0",
+      "box": {
+        "x": 0.7,
+        "y": 0,
+        "w": 0.1,
+        "h": 0.1
+      },
+      "px": {
+        "x": 896,
+        "y": 0,
+        "w": 128,
+        "h": 72
+      },
+      "aspect": 1.7778,
+      "palette": [
+        {
+          "hex": "#181818",
+          "coverage": 1
+        }
+      ],
+      "detail": {
+        "energy": 0.2339
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-contact",
+      "kind": "control",
+      "note": "Contact nav link",
+      "grid": "I0:J0",
+      "box": {
+        "x": 0.8,
+        "y": 0,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "px": {
+        "x": 1024,
+        "y": 0,
+        "w": 256,
+        "h": 72
+      },
+      "aspect": 3.5556,
+      "palette": [
+        {
+          "hex": "#0f0f0e",
+          "coverage": 0.9864
+        },
+        {
+          "hex": "#626262",
+          "coverage": 0.0078
+        },
+        {
+          "hex": "#3d3d3d",
+          "coverage": 0.0058
+        }
+      ],
+      "detail": {
+        "energy": 5.2806
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "headline",
+      "kind": "text",
+      "note": "Selected work large centered serif display",
+      "grid": "C3:H5",
+      "box": {
+        "x": 0.2,
+        "y": 0.3,
+        "w": 0.6,
+        "h": 0.3
+      },
+      "px": {
+        "x": 256,
+        "y": 216,
+        "w": 768,
+        "h": 216
+      },
+      "aspect": 3.5556,
+      "palette": [
+        {
+          "hex": "#24211c",
+          "coverage": 0.8035
+        },
+        {
+          "hex": "#d6cac6",
+          "coverage": 0.1406
+        },
+        {
+          "hex": "#4d3d30",
+          "coverage": 0.0477
+        },
+        {
+          "hex": "#635757",
+          "coverage": 0.0054
+        },
+        {
+          "hex": "#8b837b",
+          "coverage": 0.0029
+        }
+      ],
+      "detail": {
+        "energy": 32.116
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 8,
+          "capHeightPx": 138.3,
+          "inkIsDark": false,
+          "allCaps": false,
+          "advance": 0.5533,
+          "advTall": 0.4882,
+          "advX": 0.5569,
+          "gap": 0.0651,
+          "xRatio": 0.6378,
+          "stemW": 0.1212,
+          "contrast": 2.2515,
+          "serif": 1.3574,
+          "densTall": 0.4052,
+          "densX": 0.4243,
+          "weight": 0.4052
+        },
+        "widthClass": "condensed",
+        "weightClass": "regular",
+        "chosen": {
+          "family": "Elsie Swash Caps",
+          "weight": 400,
+          "fontSizePx": 198,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "32c86b64cc0b"
+        }
+      }
+    },
+    {
+      "id": "copyright",
+      "kind": "text",
+      "note": "© 2024 small footer mark",
+      "grid": "A9:B9",
+      "coverBox": {
+        "x": 0,
+        "y": 0.9,
+        "w": 0.2,
+        "h": 0.1
+      },
+      "box": {
+        "x": 0.0328,
+        "y": 0.925,
+        "w": 0.0422,
+        "h": 0.0333
+      },
+      "px": {
+        "x": 42,
+        "y": 666,
+        "w": 54,
+        "h": 24
+      },
+      "aspect": 2.25,
+      "palette": [
+        {
+          "hex": "#161710",
+          "coverage": 0.8819
+        },
+        {
+          "hex": "#515151",
+          "coverage": 0.1042
+        },
+        {
+          "hex": "#382828",
+          "coverage": 0.0069
+        },
+        {
+          "hex": "#787868",
+          "coverage": 0.0069
+        }
+      ],
+      "detail": {
+        "energy": 5.2162
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 5,
+          "capHeightPx": 10,
+          "inkIsDark": false,
+          "allCaps": false,
+          "advance": 0.6637,
+          "advTall": 0.6637,
+          "advX": null,
+          "gap": 0.2655,
+          "xRatio": 0.8148,
+          "stemW": 0.1731,
+          "contrast": 1.0445,
+          "serif": null,
+          "densTall": 0.4836,
+          "densX": null,
+          "weight": 0.4836
+        },
+        "widthClass": "normal",
+        "weightClass": "medium",
+        "chosen": {
+          "family": "Delius Unicase",
+          "weight": 400,
+          "fontSizePx": 14,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "5f78987c0546"
+        }
+      }
+    }
+  ],
+  "compSha256": "f1384b5731ac45f14d52bc31201a80fa6223337a2db6f34e5ca3dafb1388120e",
+  "regionsSource": {
+    "path": ".impeccable/build/regions.json",
+    "sha256": "9f53f2e46a928d5d021cff8936020c96e189de46b8619d4133708d0aa61914c2"
+  }
+}

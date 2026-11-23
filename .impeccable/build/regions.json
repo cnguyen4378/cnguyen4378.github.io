@@ -1,0 +1,47 @@
+{
+  "regions": [
+    {
+      "id": "bg-atmosphere",
+      "kind": "plate",
+      "grid": "A0:J9",
+      "bleed": true,
+      "note": "Full-bleed dark nocturnal architecture and water photograph as the page ground"
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "grid": "A0:C0",
+      "note": "Carter Nguyen wordmark top left"
+    },
+    {
+      "id": "nav-work",
+      "kind": "control",
+      "grid": "G0:G0",
+      "note": "Work nav link"
+    },
+    {
+      "id": "nav-about",
+      "kind": "control",
+      "grid": "H0:H0",
+      "note": "About nav link"
+    },
+    {
+      "id": "nav-contact",
+      "kind": "control",
+      "grid": "I0:J0",
+      "note": "Contact nav link"
+    },
+    {
+      "id": "headline",
+      "kind": "text",
+      "grid": "C3:H5",
+      "note": "Selected work large centered serif display"
+    },
+    {
+      "id": "copyright",
+      "kind": "text",
+      "grid": "A9:B9",
+      "note": "© 2024 small footer mark"
+    }
+  ]
+}
